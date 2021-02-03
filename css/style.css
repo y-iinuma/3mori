@@ -1,0 +1,129 @@
+body {
+	font-size: 0.8em;
+}
+select {
+	width: 18em;
+	border-radius: 10px;
+	border: 1px solid #666666;
+	padding-left: 1em;
+}
+input[type=radio] {
+	display: none;
+}
+
+input[type=radio] + span {
+	border: 1px solid #006dd9;
+	border-radius: 5px;
+	padding: 3px 8px;
+	line-height: 2.5em;
+}
+
+input[type=radio]:checked + span {
+	background: #31a9ee;
+	color: #ffffff;
+//	font-weight: bold;
+}
+
+input[type=radio]:disabled + span {
+	display: none;
+}
+
+.3m-main {
+	display:-webkit-box;
+	display:-moz-box;
+	display:-ms-flexbox;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:flex;
+	-webkit-box-lines:multiple;
+	-moz-box-lines:multiple;
+	-webkit-flex-wrap:wrap;
+	-moz-flex-wrap:wrap;
+	-ms-flex-wrap:wrap;
+	flex-wrap:wrap;
+	width:100%;
+}
+
+.device-area {
+	border: 4px solid #00ccff;
+	border-bottom: 50px solid #00ccff;
+	border-radius: 10px;
+	display: table-cell;
+	width: 300px;
+	height: 540px;
+}
+
+.device-area .header {
+	background: #00ccff;
+	color: #0000aa;
+	font-weight: bold;
+	text-align: center;
+}
+
+.plan-area {
+	border: 4px solid #ffaacc;
+	border-bottom: 50px solid #ffaacc;
+	border-radius: 10px;
+	display: table-cell;
+	height: 100%;
+	margin-left: 3px;
+}
+
+.plan-area .header {
+	background: #ffaacc;
+	color: #aa0000;
+	font-weight: bold;
+	text-align: center;
+}
+
+.plan-area .footer {
+	background: #ffaacc;
+	color: #aa0000;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+}
+
+.campaign-area {
+	border: 4px solid #00ff66;
+	border-bottom: 50px solid #00ff66;
+	border-radius: 10px;
+//	margin: 2em 0;
+	display: table-cell;
+//	height: 300px;
+}
+
+.campaign-area .header {
+	background: #00ff66;
+	color: #003300;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+.device-area div,
+.plan-area div,
+.campaign-area div {
+	padding: 0 1em;
+}
+
+input[type=text] {
+	text-align: right;
+	width: 7em;
+	padding-right: 1em;
+	border-radius: 10px;
+	border: 1px solid #666666;
+}
+
+.element {
+//	margin-left: 1em;
+	border-left: 4px solid #cfcfcf;
+	border-bottom: 1px solid #cfcfcf;
+	margin: 1em 2em 0.5em 1em;
+//	margin-right: 2em;
+//	margin-bottom: 0.5em;
+}
+
+
+
