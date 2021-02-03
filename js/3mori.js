@@ -89,7 +89,6 @@ $(function(){
 	
 	//バンドル割引変更時
 	$("#bandle,input[name='options']").on("change", function() {
-		alert("change event");
 		$("#plan-amount").text(sumPlanAmount());
 	});
 	
