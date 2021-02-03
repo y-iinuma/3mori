@@ -1,3 +1,4 @@
+<!--nobanner-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,100 +15,93 @@
 		<div class="header">本体価格</div>
 			<div class="element">キャリア</div>
 			<div>
-			<select id="carrier">
-				<option value="au">au</option>
-				<option value="docomo">docomo</option>
-				<option value="softbank">SoftBank</option>
-				<option value="uqmobile">UQ mobile</option>
-				<option value="ymobile">Y!mobile</option>
-				<!--<option value="others">その他</option>-->
-			</select>
+				<select id="carrier">
+					<option value="au">au</option>
+					<option value="docomo">docomo</option>
+					<option value="softbank">SoftBank</option>
+					<option value="uqmobile">UQ mobile</option>
+					<option value="ymobile">Y!mobile</option>
+					<!--<option value="others">その他</option>-->
+				</select>
 			</div>
 			<div class="element">オーダー</div>
 			<div>
-			<label>
-				<input name="order" type="radio" value=1 >
-				<span>ＭＮＰ</span>
-			</label>
-			<label>
-				<input name="order" type="radio" value=2>
-				<span>新規</span>
-			</label>
-			<label>
-				<input name="order" type="radio" value=3>
-				<span>機種変更</span>
-			</label>
-			<label>
-				<input name="order" type="radio" value=4 disabled>
-				<span>契約変更</span>
-			</label>
+				<label>
+					<input name="order" type="radio" value=1 >
+					<span>ＭＮＰ</span>
+				</label>
+				<label>
+					<input name="order" type="radio" value=2>
+					<span>新規</span>
+				</label>
+				<label>
+					<input name="order" type="radio" value=3>
+					<span>機種変更</span>
+				</label>
+				<label>
+					<input name="order" type="radio" value=4 disabled>
+					<span>契約変更</span>
+				</label>
+				<label>
+					<input name="order" type="radio" value=5 disabled>
+					<span>番号移行</span>
+				</label>
 			</div>
-			<div class="element">機種
-			</div>
+			<div class="element">機種</div>
 			<div>
-			<select id="device"></select>
+				<select id="device"></select>
 			</div>
-			<div class="element">本体価格
-			</div>
+			<div class="element">本体価格</div>
 			<div>
-			<input id="price" type="text" value=0 pattern="\d*" class="comma-num" />円
+				<input id="price" type="text" value=0 pattern="\d*" class="comma-num" />円
 			</div>
-			<div class="element">値引き
-			</div>
+			<div class="element">値引き</div>
 			<div>
-			<input id="discount" type="text" value=0 pattern="\d*" class="comma-num" />円
+				<input id="discount" type="text" value=0 pattern="\d*" class="comma-num" />円
 			</div>
-			<div class="element">購入方法
-			</div>
+			<div class="element">購入方法</div>
 			<div>
-			<label>
-				<input name="installment" type="radio" value=1>
-				<span>12回</span>
-			</label>
-			<label>
-				<input name="installment" type="radio" value=2 checked>
-				<span>24回</span>
-			</label>
-			<label>
-				<input name="installment" type="radio" value=3>
-				<span>36回</span>
-			</label>
-			<label>
-				<input name="installment" type="radio" value=4>
-				<span>48回</span>
-			</label>
-			<label>
-				<input name="installment" type="radio" value=0>
-				<span>一括</span>
-			</label>
+				<label>
+					<input name="installment" type="radio" value=1>
+					<span>12回</span>
+				</label>
+				<label>
+					<input name="installment" type="radio" value=2 checked>
+					<span>24回</span>
+				</label>
+				<label>
+					<input name="installment" type="radio" value=3>
+					<span>36回</span>
+				</label>
+				<label>
+					<input name="installment" type="radio" value=4>
+					<span>48回</span>
+				</label>
+				<label>
+					<input name="installment" type="radio" value=0>
+					<span>一括</span>
+				</label>
 			</div>
-			<div class="element">頭金
-			</div>
+			<div class="element">頭金</div>
 			<div>
-			<input id="deposit" type="text" value=0 pattern="\d*" class="comma-num" />円
+				<input id="deposit" type="text" value=0 pattern="\d*" class="comma-num" />円
 			</div>
 		</div>
 		<div class="plan-area">
-		<div class="header">料金プラン・オプション
-		</div>
-			<div class="element">通話プラン
-			</div>
+		<div class="header">料金プラン・オプション</div>
+			<div class="element">通話プラン</div>
 			<div>
-			<select id="talk-plan"></select>
+				<select id="talk-plan"></select>
 			</div>
-			<div class="element">データ定額
-			</div>
+			<div class="element">データ定額</div>
 			<div>
-			<select id="data-plan"></select>
+				<select id="data-plan"></select>
 			</div>
-			<div class="element">オプションサービス
-			</div>
-			<div id="options">
-			</div>
-			<div class="element">固定バンドル割引
-			</div>
+			<div class="element">オプションサービス</div>
+			<div id="options"></div>
+			<div class="element">固定バンドル割引</div>
 			<div>
-			<select id="bandle"></select>
+				<select id="bandle"></select>
 			</div>
 		<div class="footer"><span id="plan-amount"></span>円
 		</div>
@@ -115,18 +109,12 @@
 		<div class="campaign-area">
 		<div class="header">キャンペーン・割引施策
 		</div>
-			<div class="element">キャンペーン
-			</div>
-			<div>
-			</div>
-			<div class="element">下取り
-			</div>
-			<div>
-			</div>
-			<div class="element">クーポン
-			</div>
-			<div>
-			</div>
+			<div class="element">キャンペーン</div>
+			<div></div>
+			<div class="element">下取り</div>
+			<div></div>
+			<div class="element">クーポン</div>
+			<div></div>
 		</div>
 	</body>
 </html>
