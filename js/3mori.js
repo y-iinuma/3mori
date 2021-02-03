@@ -1,4 +1,4 @@
-var TAX_RATE = 1.08, jsonData;
+var TAX_RATE = 1.1, jsonData;
 
 $(function(){
 	//3桁区切り
@@ -21,8 +21,7 @@ $(function(){
 
 	$.getJSON("js/3mori.data.json", function(data) {
 		jsonData = data;
-	})
-	.error(function(jqXHR, textStatus, errorThrown) {
+	}).error(function(jqXHR, textStatus, errorThrown) {
 		alert("設定ファイルの読み込みでエラーが発生しました：" + textStatus);
 	});
 
