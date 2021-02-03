@@ -71,7 +71,7 @@
 			
 		}
 	},
-	"talkplan" : {
+	"talkplan": {
 		"au-unlim": {
 			"display": "通話定額2",
 			"amount": 1800,
@@ -95,7 +95,7 @@
 				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3", 
 				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as"
 			]
-		},
+		}
 	},
 	"dataplan": {
 			"au-pita5g-1": {
@@ -153,7 +153,7 @@
 				"bandle": 1000,
 				"family": [500, 1000, 2020],
 				"discount": ["au-2year"]
-			},
+			}
 	},
 	"options": {
 		"au-5gnet": {
