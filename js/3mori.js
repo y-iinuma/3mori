@@ -77,15 +77,21 @@ $(function(){
 
 	//データプラン変更時
 	$("#data-plan").on("change", function() {
+		//各種プルダウン初期化
 		$("#bandle option").remove();
+		$("#family option").remove();
+
+		//バンドル割引プルダウン変更
 		if ( $("#data-plan").val() == null ) return false;
 		var b = jsonData.dataplan[$("#data-plan").val()].bandle;
 		$("#bandle").append(addOptionArray(0, "なし"))
 			.append(addOptionArray(b, "▲"+String(Math.floor(b*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
 			.change();
+
+		//家族割引プルダウン変更
 		b = jsonData.dataplan[$("#data-plan").val()].family;
 		$("#family").append(addOptionArray(0, "なし"))
-			.append(addOptionArray(b, "▲"+String(Math.floor(b*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
+			.append(addOptionArray(b[0], "▲"+String(Math.floor(b[0]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
 			.change();
 		$("#plan-amount").text(sumPlanAmount());
 	});
