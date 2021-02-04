@@ -81,8 +81,11 @@ $(function(){
 		if ( $("#data-plan").val() == null ) return false;
 		var b = jsonData.dataplan[$("#data-plan").val()].bandle;
 		$("#bandle").append(addOptionArray(0, "なし"))
-			.append(addOptionArray(b[0], "▲"+String(Math.floor(b[0]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円 (1〜2年目)"))
-			.append(addOptionArray(b[1], "▲"+String(Math.floor(b[1]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円 (3年目以降)"))
+			.append(addOptionArray(b, "▲"+String(Math.floor(b*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
+			.change();
+		b = jsonData.dataplan[$("#data-plan").val()].family;
+		$("#family").append(addOptionArray(0, "なし"))
+			.append(addOptionArray(b, "▲"+String(Math.floor(b*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
 			.change();
 		$("#plan-amount").text(sumPlanAmount());
 	});
