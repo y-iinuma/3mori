@@ -101,7 +101,7 @@ $(function(){
 		for ( var i=0; i < val.length; i++ )
 			$("#family").append(addOptionArray(val[i],
 				//金額表示：税込表示と3桁区切り
-				"▲" + String(Math.floor(val[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')　+ "円　("
+				"▲" + String(Math.floor(val[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')　+ "円 ("
 				//人数表示：最終アイテムのみ「以上」を末尾に付加
 				+ (i+2) +"人" + (i == val.length - 1 ? "以上" : "") + ")"));
 		$("#family").change();
@@ -109,7 +109,9 @@ $(function(){
 		//その他割引プルダウン変更
 		val = jsonData.dataplan[$("#data-plan").val()].discount;
 		var option = $.map(val, function(elm) {
-			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
+			return addOptionArray(jsonData.discount[elm].amount, 
+				"▲" + String(Math.floor(jsonData.discount[elm].amount * TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') + "円 ("
+				+ jsonData.discount[elm].display + ")");
 		});
 		$("#others").empty()
 			.append(addOptionArray(0, "なし"))
@@ -120,7 +122,7 @@ $(function(){
 	});
 	
 	//項目変更時再計算
-	$("#bandle,#family,#discount,input[name='options']").on("change", function() {
+	$("#bandle,#family,#others,input[name='options']").on("change", function() {
 		$("#plan-amount").text(sumPlanAmount());
 	});
 	
