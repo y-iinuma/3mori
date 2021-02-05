@@ -163,7 +163,7 @@
 				"bandle": 1000,
 				"family": [500, 1000],
 				"discount": ["au-credit"]
-			},
+			}
 	},
 	"discount": {
 		"au-2year": {
