@@ -112,7 +112,7 @@ $(function(){
 			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
 		});
 		$("#discount").empty()
-			.append(addOptionArray(0, "なし"));
+			.append(addOptionArray(0, "なし"))
 			.append(option)
 			.change();
 		
