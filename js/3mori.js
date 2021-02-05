@@ -69,7 +69,7 @@ $(function(){
 	$("#talk-plan").on("change", function() {
 		var combi = jsonData.talkplan[$("#talk-plan").val()].combination;
 		if ( $("#combi_prev").val() == combi ) { //プラン区分が変わらなければ再計算してreturn
-			$("#plan-amount").text(sumPlanAmount());
+			$("#plan-amount").text(sumPlanFee());
 			return false;
 		}
 		var option = $("#talk-plan").val() ? $.map(combi, function(val) {
@@ -118,22 +118,26 @@ $(function(){
 			.append(option)
 			.change();
 		
-		$("#plan-amount").text(sumPlanAmount());
+		$("#plan-amount").text(sumPlanFee());
 	});
 	
 	//項目変更時再計算
 	$("#bandle,#family,#others,input[name='options']").on("change", function() {
-		$("#plan-amount").text(sumPlanAmount());
+		$("#plan-amount").text(sumPlanFee());
 	});
 	
 	
+	
+	$("#device,#price,#discount,installment,#deposit").on("change", function() {
+		$("#device-amount").text(sumDeviceFee());
+	});
 });
 
 function addOptionArray(val, txt) {
 	return $("<option>", { "value": val, "text": txt });
 }
 
-function sumPlanAmount() {
+function sumPlanFee() {
 	var amount = jsonData.talkplan[$("#talk-plan").val()].amount
 			+ jsonData.dataplan[$("#data-plan").val()].amount
 			- $("#bandle").val()
@@ -145,4 +149,25 @@ function sumPlanAmount() {
 	return String(Math.floor(amount*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
 }
 
-
+function sumDeviceFee() {
+	var amount = $("#price").val() - $("#discount").val() - $("#deposit").val();
+	switch ( $("input:radio[name='installment']:checked").val() ) {
+		case 0:
+			amount = 0;
+			break;
+		case 1:
+			amount /= 12;
+			break;
+		case 2:
+			amount /= 24;
+			break;
+		case 3:
+			amount /= 36;
+			break;
+		case 4:
+			amount /= 48;
+			break;
+	}
+		
+	return String(Math.floor(amount)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
+}
