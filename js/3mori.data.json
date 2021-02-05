@@ -178,7 +178,7 @@
 				"discount": ["au-credit"]
 			},
 			"au-lteflat": {
-				"display": "LTEﾌﾗｯﾄ",
+				"display": "【受付停止】LTEﾌﾗｯﾄ",
 				"amount": 5700,
 				"bandle": 934,
 				"family": [],

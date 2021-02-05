@@ -68,8 +68,10 @@ $(function(){
 	//通話プラン変更時
 	$("#talk-plan").on("change", function() {
 		var combi = jsonData.talkplan[$("#talk-plan").val()].combination;
-		if ( $("#combi_prev").val() == combi )
+		if ( $("#combi_prev").val() == combi ) { //プラン区分が変わらなければ再計算してreturn
+			$("#plan-amount").text(sumPlanAmount());
 			return false;
+		}
 		var option = $("#talk-plan").val() ? $.map(combi, function(val) {
 			return addOptionArray(val, jsonData.dataplan[val].display);
 		}) : null;
@@ -105,9 +107,12 @@ $(function(){
 		
 		//その他割引プルダウン変更
 		val = jsonData.dataplan[$("#data-plan").val()].discount;
-		$.map(val, function(elm) {
+		var option = $.map(val, function(elm) {
 			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
-		})
+		});
+		$("#discount").empty()
+			.append(option)
+			.change();
 		
 		$("#plan-amount").text(sumPlanAmount());
 	});
