@@ -75,10 +75,11 @@ $(function(){
 		var option = $("#talk-plan").val() ? $.map(combi, function(val) {
 			return addOptionArray(val, jsonData.dataplan[val].display);
 		}) : null;
+		alert(JSON.stringify(option));
 		$("#data-plan").empty()
 			.append(option)
 			.change();
-		$("#combi_prev").val(combi);
+		$("#combi_prev").val(combi); //プラン区分保持
 	});
 
 	//データプラン変更時
@@ -86,6 +87,7 @@ $(function(){
 		//各種プルダウン初期化
 		$("#bandle option").remove();
 		$("#family option").remove();
+		$("#discount option").remove();
 
 		//バンドル割引プルダウン変更
 		if ( $("#data-plan").val() == null ) return false;
