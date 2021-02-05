@@ -142,7 +142,7 @@ function sumPlanAmount() {
 	$("input[name='options']:checked").each(function() {
 		amount += +$(this).val();
 	});
-	return Math.floor(amount*TAX_RATE);
+	return Math.floor(amount*TAX_RATE).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
 }
 
 

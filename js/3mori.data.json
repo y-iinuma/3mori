@@ -182,7 +182,7 @@
 				"amount": 5700,
 				"bandle": 934,
 				"family": [],
-				"discount": ["au-daredemo"]
+				"discount": ["au-daredemo-lte"]
 			}
 	},
 	"discount": {
@@ -194,7 +194,7 @@
 			"display": "PAYカード支払割",
 			"amount": 100
 		},
-		"au-daredemo": {
+		"au-daredemo-lte": {
 			"display": "旧2年契約(誰でも割)",
 			"amount": 934
 		}
