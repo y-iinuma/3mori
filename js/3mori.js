@@ -87,21 +87,27 @@ $(function(){
 
 		//バンドル割引プルダウン変更
 		if ( $("#data-plan").val() == null ) return false;
-		var b = jsonData.dataplan[$("#data-plan").val()].bandle;
+		var val = jsonData.dataplan[$("#data-plan").val()].bandle;
 		$("#bandle").append(addOptionArray(0, "なし"))
-			.append(addOptionArray(b, "▲"+String(Math.floor(b*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
+			.append(addOptionArray(val, "▲"+String(Math.floor(val * TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
 			.change();
 
 		//家族割引プルダウン変更
-		b = jsonData.dataplan[$("#data-plan").val()].family;
+		val = jsonData.dataplan[$("#data-plan").val()].family;
 		$("#family").append(addOptionArray(0, "なし"));
-		for ( var i=0; i < b.length; i++ )
-			$("#family").append(addOptionArray(b[i],
+		for ( var i=0; i < val.length; i++ )
+			$("#family").append(addOptionArray(val[i],
 				//金額表示：税込表示と3桁区切り
-				"▲" + String(Math.floor(b[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')　+ "円　("
+				"▲" + String(Math.floor(val[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')　+ "円　("
 				//人数表示：最終アイテムのみ「以上」を末尾に付加
-				+ (i+2) +"人" + (i == b.length - 1 ? "以上" : "") + ")"));
+				+ (i+2) +"人" + (i == val.length - 1 ? "以上" : "") + ")"));
 		$("#family").change();
+		
+		//その他割引プルダウン変更
+		val = jsonData.dataplan[$("#data-plan").val()].discount;
+		$.map(val, function(elm) {
+			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
+		})
 		
 		$("#plan-amount").text(sumPlanAmount());
 	});
@@ -119,7 +125,11 @@ function addOptionArray(val, txt) {
 }
 
 function sumPlanAmount() {
-	var amount = jsonData.talkplan[$("#talk-plan").val()].amount + jsonData.dataplan[$("#data-plan").val()].amount - $("#bandle").val();
+	var amount = jsonData.talkplan[$("#talk-plan").val()].amount
+			+ jsonData.dataplan[$("#data-plan").val()].amount
+			- $("#bandle").val()
+			- $("#family").val()
+			- $("#discount").val();
 	$("input[name='options']:checked").each(function() {
 		amount += +$(this).val();
 	});
