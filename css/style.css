@@ -1,5 +1,6 @@
 body {
-	font-size: 0.8em;
+	font-size: 0.8rem;
+	font-family: sans-serif;
 	width: 100vw;
 	height: 100vh;
 	overflow-y: scroll;
@@ -16,10 +17,10 @@ body::-webkit-scrollbar {  /* Chrome, Safari ‘Î‰ž */
   }
 }
 select {
-	width: 18em;
+	width: 18rem;
 	border-radius: 10px;
 	border: 1px solid #666666;
-	padding-left: 1em;
+	padding-left: 1rem;
 }
 input[type=radio] {
 	display: none;
@@ -29,7 +30,7 @@ input[type=radio] + span {
 	border: 1px solid #006dd9;
 	border-radius: 5px;
 	padding: 3px 8px;
-	line-height: 2.5em;
+	line-height: 2.5rem;
 }
 
 input[type=radio]:checked + span {
@@ -63,7 +64,7 @@ input[type=radio]:disabled + span {
 	border-bottom: 50px solid #00ccff;
 	border-radius: 10px;
 	display: table-cell;
-	width: 35vw;
+	width: 30vw;
 	height: 85vh;
 }
 
@@ -89,24 +90,34 @@ input[type=radio]:disabled + span {
 	font-weight: bold;
 	text-align: center;
 }
-
-.plan-area .footer {
-	background: #ffaacc;
-	color: #aa0000;
+.footer {
 	font-weight: bold;
-	font-size: 1.6em;
+	font-size: 1.6rem;
 	text-align: center;
 	position: absolute;
-	bottom: 40px;
-	width: 30vw;
+	bottom: 35px;
 	text-align: right;
+}
+.device-area .footer {
+	color: #0000aa;
+	width: 35vw;
+}
+.plan-area .footer {
+	color: #aa0000;
+	width: 35vw;
+}
+.campaign-area .footer {
+	color: #003300;
+	width: 30vw;
+}
+.footer span {
+	padding-right: 0.8rem;
 }
 
 .campaign-area {
 	border: 4px solid #00ff66;
 	border-bottom: 50px solid #00ff66;
 	border-radius: 10px;
-//	margin: 2em 0;
 	display: table-cell;
 	width: 30vw;
 }
@@ -122,24 +133,21 @@ input[type=radio]:disabled + span {
 .device-area div,
 .plan-area div,
 .campaign-area div {
-	padding: 0 1em;
+	padding: 0 1rem;
 }
 
 input[type=text] {
 	text-align: right;
-	width: 7em;
-	padding-right: 1em;
+	width: 7rem;
+	padding-right: 1rem;
 	border-radius: 10px;
 	border: 1px solid #666666;
 }
 
 .element {
-//	margin-left: 1em;
 	border-left: 4px solid #cfcfcf;
 	border-bottom: 1px solid #cfcfcf;
-	margin: 1em 2em 0.5em 1em;
-//	margin-right: 2em;
-//	margin-bottom: 0.5em;
+	margin: 1rem 2rem 0.5rem 1rem;
 }
 
 
