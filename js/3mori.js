@@ -75,7 +75,6 @@ $(function(){
 		var option = $("#talk-plan").val() ? $.map(combi, function(val) {
 			return addOptionArray(val, jsonData.dataplan[val].display);
 		}) : null;
-		alert(JSON.stringify(option));
 		$("#data-plan").empty()
 			.append(option)
 			.change();
@@ -112,16 +111,16 @@ $(function(){
 		var option = $.map(val, function(elm) {
 			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
 		});
-		alert(JSON.stringify(option));
 		$("#discount").empty()
+			.append(addOptionArray(0, "なし"));
 			.append(option)
 			.change();
 		
 		$("#plan-amount").text(sumPlanAmount());
 	});
 	
-	//バンドル割引変更時
-	$("#bandle,input[name='options']").on("change", function() {
+	//項目変更時再計算
+	$("#bandle,#family,#discount,input[name='options']").on("change", function() {
 		$("#plan-amount").text(sumPlanAmount());
 	});
 	
