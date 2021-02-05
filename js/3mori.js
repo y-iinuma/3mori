@@ -150,7 +150,7 @@ function sumPlanFee() {
 }
 
 function sumDeviceFee() {
-	var amount = $("#price").val() - $("#discount").val() - $("#deposit").val();
+	var amount = $("#price").val().replace(/,/g, '') - $("#discount").val().replace(/,/g, '') - $("#deposit").val().replace(/,/g, '');
 	switch ( $("input:radio[name='installment']:checked").val() ) {
 		case 0:
 			amount = 0;
