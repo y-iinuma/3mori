@@ -151,7 +151,7 @@ function sumPlanFee() {
 
 function sumDeviceFee() {
 	var amount = $("#price").val().replace(/,/g, '') - $("#discount").val().replace(/,/g, '') - $("#deposit").val().replace(/,/g, '');
-	amount = amount ? amount / ($("input[name='installment']:checked").val() * 12) ? 0;
+	amount = amount ? amount / ($("input[name='installment']:checked").val() * 12) : 0;
 		
 	return String(Math.floor(amount)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
 }
