@@ -90,9 +90,11 @@ $(function(){
 
 		//家族割引プルダウン変更
 		b = jsonData.dataplan[$("#data-plan").val()].family;
-		$("#family").append(addOptionArray(0, "なし"))
-			.append(addOptionArray(b[0], "▲"+String(Math.floor(b[0]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"))
-			.change();
+		$("#family").append(addOptionArray(0, "なし"));
+		for ( int i=0; i < b.length; i++ )
+			$("#family").append(addOptionArray(b[i], "▲"+String(Math.floor(b[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"));
+		$("#family").change();
+		
 		$("#plan-amount").text(sumPlanAmount());
 	});
 	
