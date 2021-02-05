@@ -1,6 +1,12 @@
 body {
 	font-size: 0.8em;
 	height: 100vh;
+	overflow-y: scroll;
+	-ms-overflow-style: none;    /* IE, Edge ‘Î‰ž */
+	scrollbar-width: none;       /* Firefox ‘Î‰ž */
+}
+body::-webkit-scrollbar {  /* Chrome, Safari ‘Î‰ž */
+	display:none;
 }
 @supports (-webkit-touch-callout: none) {
   body {
@@ -56,8 +62,8 @@ input[type=radio]:disabled + span {
 	border-bottom: 50px solid #00ccff;
 	border-radius: 10px;
 	display: table-cell;
-	width: 40%;
-	height: 100%;
+	width: 40vw;
+	height: 88vh;
 }
 
 .device-area .header {
@@ -72,8 +78,7 @@ input[type=radio]:disabled + span {
 	border-bottom: 50px solid #ffaacc;
 	border-radius: 10px;
 	display: table-cell;
-	width: 30%;
-	height: 100%;
+	width: 30vw;
 	margin-left: 3px;
 }
 
@@ -88,6 +93,7 @@ input[type=radio]:disabled + span {
 	background: #ffaacc;
 	color: #aa0000;
 	font-weight: bold;
+	font-size: 1.6em;
 	text-align: center;
 	position: relative;
 	bottom: -200px;
@@ -100,7 +106,7 @@ input[type=radio]:disabled + span {
 	border-radius: 10px;
 //	margin: 2em 0;
 	display: table-cell;
-	width: 30%;
+	width: 30vw;
 }
 
 .campaign-area .header {
