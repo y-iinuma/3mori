@@ -110,7 +110,7 @@ $(function(){
 		var option = $.map(val, function(elm) {
 			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
 		});
-		alert(option);
+		alert(JSON.stringify(option));
 		$("#discount").empty()
 			.append(option)
 			.change();
