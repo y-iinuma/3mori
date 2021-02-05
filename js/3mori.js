@@ -147,7 +147,7 @@ function sumPlanFee() {
 		amount += +$(this).val();
 	});
 	$("#plan-amount").text( String(Math.floor(amount*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
-	$("#total-amount").text( String(Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, '')).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')) );
+	$("#total-amount").text(String( Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, '')) ).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
 }
 
 function sumDeviceFee() {
@@ -155,5 +155,5 @@ function sumDeviceFee() {
 	amount = amount > 0 ? amount / ($("input[name='installment']:checked").val() * 12) : 0;
 		
 	$("#device-amount").text( String(Math.floor(amount)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
-	$("#total-amount").text( String(Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, '')).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')) );
+	$("#total-amount").text(String( Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, '')) ).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
 }
