@@ -111,7 +111,7 @@ $(function(){
 		var option = $.map(val, function(elm) {
 			return addOptionArray(jsonData.discount[elm].amount, jsonData.discount[elm].display);
 		});
-		$("#discount").empty()
+		$("#others").empty()
 			.append(addOptionArray(0, "なし"))
 			.append(option)
 			.change();
