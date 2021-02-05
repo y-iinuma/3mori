@@ -92,7 +92,7 @@ $(function(){
 		b = jsonData.dataplan[$("#data-plan").val()].family;
 		$("#family").append(addOptionArray(0, "なし"));
 		for ( var i=0; i < b.length; i++ )
-			$("#family").append(addOptionArray(b[i], "▲"+String(Math.floor(b[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円"));
+			$("#family").append(addOptionArray(b[i], "▲"+String(Math.floor(b[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')+"円　("+ i +"人" + (i == b.length) ? "以上" : "" + ")"));
 		$("#family").change();
 		
 		$("#plan-amount").text(sumPlanAmount());
