@@ -128,7 +128,7 @@ $(function(){
 	
 	
 	
-	$("#device,#price,#discount,installment,#deposit").on("change", function() {
+	$("#device,#price,#discount,input[name='installment'],#deposit").on("change", function() {
 		$("#device-amount").text(sumDeviceFee());
 	});
 });
@@ -151,7 +151,7 @@ function sumPlanFee() {
 
 function sumDeviceFee() {
 	var amount = $("#price").val().replace(/,/g, '') - $("#discount").val().replace(/,/g, '') - $("#deposit").val().replace(/,/g, '');
-	switch ( $("input:radio[name='installment']:checked").val() ) {
+	switch ( $("input[name='installment']:checked").val() ) {
 		case 0:
 			amount = 0;
 			break;
