@@ -107,7 +107,7 @@
 		},
 		"au-lte": {
 			"display": "【受付停止】LTEﾌﾟﾗﾝ",
-			"amount": 0,
+			"amount": 1868,
 			"combination": [
 				"au-lteflat"
 			]
