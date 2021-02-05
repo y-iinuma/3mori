@@ -76,24 +76,27 @@
 			"display": "通話定額2",
 			"amount": 1800,
 			"combination": [
-				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3", 
-				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as"
+				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3",
+				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
+				"au-max5g-new"
 			]
 		},
 		"au-light": {
 			"display": "通話定額ﾗｲﾄ2",
 			"amount": 800,
 			"combination": [
-				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3", 
-				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as"
+				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3",
+				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
+				"au-max5g-new"
 			]
 		},
 		"au-simple": {
 			"display": "なし",
 			"amount": 0,
 			"combination": [
-				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3", 
-				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as"
+				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3",
+				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
+				"au-max5g-new"
 			]
 		}
 	},
@@ -153,12 +156,29 @@
 				"bandle": 1000,
 				"family": [500, 1000, 2020],
 				"discount": ["au-2year"]
-			}
+			},
+			"au-max5g-new": {
+				"display": "使い放題MAX 5G",
+				"amount": 6580,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["au-credit"]
+			},
+	},
+	"discount": {
+		"au-2year": {
+			"display": "2年契約",
+			"amount": 170
+		},
+		"au-credit": {
+			"display": "PAYカード支払割",
+			"amount": 100
+		}
 	},
 	"options": {
 		"au-5gnet": {
 			"display": "5G NET",
-			"amount": 300,
+			"amount": 0,
 			"checked": true,
 			"exclusion": 0
 		},
