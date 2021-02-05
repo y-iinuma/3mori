@@ -67,12 +67,16 @@ $(function(){
 	
 	//通話プラン変更時
 	$("#talk-plan").on("change", function() {
-		var option = $("#talk-plan").val() ? $.map(jsonData.talkplan[$("#talk-plan").val()].combination, function(val) {
+		var combi = jsonData.talkplan[$("#talk-plan").val()].combination;
+		if ( $("#combi_prev").val() == combi )
+			return false;
+		var option = $("#talk-plan").val() ? $.map(combi, function(val) {
 			return addOptionArray(val, jsonData.dataplan[val].display);
 		}) : null;
 		$("#data-plan").empty()
 			.append(option)
 			.change();
+		$("#combi_prev").val(combi);
 	});
 
 	//データプラン変更時
@@ -96,7 +100,7 @@ $(function(){
 				//金額表示：税込表示と3桁区切り
 				"▲" + String(Math.floor(b[i]*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,')　+ "円　("
 				//人数表示：最終アイテムのみ「以上」を末尾に付加
-				+ (i+1) +"人" + (i == b.length - 1 ? "以上" : "") + ")"));
+				+ (i+2) +"人" + (i == b.length - 1 ? "以上" : "") + ")"));
 		$("#family").change();
 		
 		$("#plan-amount").text(sumPlanAmount());
