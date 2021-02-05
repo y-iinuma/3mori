@@ -69,7 +69,7 @@ $(function(){
 	$("#talk-plan").on("change", function() {
 		var combi = jsonData.talkplan[$("#talk-plan").val()].combination;
 		if ( $("#combi_prev").val() == combi ) { //プラン区分が変わらなければ再計算してreturn
-			$("#plan-amount").text(sumPlanFee());
+			sumPlanFee();
 			return false;
 		}
 		var option = $("#talk-plan").val() ? $.map(combi, function(val) {
@@ -118,18 +118,18 @@ $(function(){
 			.append(option)
 			.change();
 		
-		$("#plan-amount").text(sumPlanFee());
+		sumPlanFee();
 	});
 	
 	//項目変更時再計算
 	$("#bandle,#family,#others,input[name='options']").on("change", function() {
-		$("#plan-amount").text(sumPlanFee());
+		sumPlanFee();
 	});
 	
 	
 	
 	$("#device,#price,#discount,input[name='installment'],#deposit").on("change", function() {
-		$("#device-amount").text(sumDeviceFee());
+		sumDeviceFee();
 	});
 });
 
@@ -146,12 +146,14 @@ function sumPlanFee() {
 	$("input[name='options']:checked").each(function() {
 		amount += +$(this).val();
 	});
-	return String(Math.floor(amount*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
+	$("#plan-amount").text( String(Math.floor(amount*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
+	$("#total-amount").text( String($("#device-amount").text().replace(/,/g, '') + $("#plan-amount").text().replace(/,/g, '')).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
 }
 
 function sumDeviceFee() {
 	var amount = $("#price").val().replace(/,/g, '') - $("#discount").val().replace(/,/g, '') - $("#deposit").val().replace(/,/g, '');
-	amount = amount ? amount / ($("input[name='installment']:checked").val() * 12) : 0;
+	amount = amount > 0 ? amount / ($("input[name='installment']:checked").val() * 12) : 0;
 		
-	return String(Math.floor(amount)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
+	$("#device-amount").text( String(Math.floor(amount)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
+	$("#total-amount").text( String($("#device-amount").text().replace(/,/g, '') + $("#plan-amount").text().replace(/,/g, '')).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
 }
