@@ -138,7 +138,7 @@ function sumPlanAmount() {
 			+ jsonData.dataplan[$("#data-plan").val()].amount
 			- $("#bandle").val()
 			- $("#family").val()
-			- $("#discount").val();
+			- $("#others").val();
 	$("input[name='options']:checked").each(function() {
 		amount += +$(this).val();
 	});
