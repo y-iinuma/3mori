@@ -49,6 +49,13 @@
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
 			"options": ["au-5gnet", "au-app890"]
 		},
+		"au-3mori": {
+			"display": "旧プラン見積り用",
+			"price": 0,
+			"deposit": 0,
+			"talkplan": ["au-unlim", "au-light", "au-simple", "au-lte"],
+			"options": ["au-ltenet"]
+		},
 		"au": [
 			"au-ip1264", "au-ip12128", "au-ip12256",
 			"au-ip12m64", "au-ip12m128", "au-ip12m256"
@@ -98,7 +105,14 @@
 				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
 				"au-max5g-new"
 			]
-		}
+		},
+		"au-lte": {
+			"display": "【受付停止】LTEﾌﾟﾗﾝ",
+			"amount": 0,
+			"combination": [
+				"au-lteflat"
+			]
+		},
 	},
 	"dataplan": {
 			"au-pita5g-1": {
