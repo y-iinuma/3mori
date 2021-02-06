@@ -22,7 +22,7 @@ $(function(){
 	$.getJSON("js/3mori.data.json", function(data) {
 		jsonData = data;
 	}).error(function(jqXHR, textStatus, errorThrown) {
-		alert("設定ファイルの読み込みでエラーが発生しました：" + textStatus);
+		alert("設定ファイルの読み込みでエラーが発生しました：" + textStatus + "\n" + jqXHR.responseText);
 	});
 
 	//キャリア変更時
@@ -78,6 +78,22 @@ $(function(){
 		$("#data-plan").empty()
 			.append(option)
 			.change();
+
+		//オプション変更
+		var checkList = $("#talk-plan").val() ? $.map(jsonData.device[$("#device").val()].options, function(val) {
+			var $optLine = $("<label>");
+			$optLine.append($("<input/>").prop({
+				"type": "checkbox",
+				"name": "options",
+				"value": jsonData.options[val].amount,
+				"checked": jsonData.options[val].checked
+			}));
+			$optLine.append(jsonData.options[val].display);
+			return $("<div>").append($optLine);
+		}) : null;
+		$("#options").empty()
+			.append(checkList);
+
 		$("#combi_prev").val(combi); //プラン区分保持
 	});
 
