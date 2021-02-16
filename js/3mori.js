@@ -16,6 +16,28 @@ $(function(){
 			$(this).get(0).createTextRange().select();
 		}
 	});
+	
+	//数字パッドイベント
+	$("input[id^=num]").on("click", function() {
+		if ( $("#numinput").val().length >= 15 ) //最大長15桁（数値化によりオーバーフローする為）
+			return false;
+		$("#numinput").val( Number($("#numinput").val() + $(this).val()) );
+	});
+	$("#bs").on("click", function() {
+		$("#numinput").val( $("#numinput").val().slice(0, -1) );
+	});
+	$("#ok").on("click", function() {
+		if ( $("#numinput").val() == "" ) $("#numinput").val("0");
+		$("#"+$("#targetid").val()).val( $("#numinput").val() )
+			.blur();
+		$(".numpad").css("display","none");
+	});
+	//入力イベントをラップ
+	$("input[type=text]").focus( function() {
+		$("#numinput").val( $(this).val() );
+		$(".numpad").css("display","block");
+		$("#targetid").val($(this).attr("id"));
+	});
 
 	$.getJSON("js/3mori.data.json", function(data) {
 		jsonData = data;
