@@ -15,14 +15,7 @@
 			<div class="header">本体価格</div>
 			<div class="element">キャリア</div>
 			<div>
-				<select id="carrier">
-					<option value="au">au</option>
-					<option value="docomo">docomo</option>
-					<option value="softbank">SoftBank</option>
-					<option value="uqmobile">UQ mobile</option>
-					<option value="ymobile">Y!mobile</option>
-					<!--<option value="others">その他</option>-->
-				</select>
+				<select id="carrier"></select>
 			</div>
 			<div class="element">オーダー</div>
 			<div>
@@ -35,15 +28,15 @@
 					<span>新規</span>
 				</label>
 				<label>
-					<input name="order" type="radio" value=3>
+					<input class="au docomo softbank uqmobile ymobile rakuten" name="order" type="radio" value=3 disabled>
 					<span>機種変更</span>
 				</label>
 				<label>
-					<input name="order" type="radio" value=4 disabled>
+					<input class="docomo" name="order" type="radio" value=4 disabled>
 					<span>契約変更</span>
 				</label>
 				<label>
-					<input name="order" type="radio" value=5 disabled>
+					<input class="au softbank" name="order" type="radio" value=5 disabled>
 					<span>番号移行</span>
 				</label>
 			</div>
@@ -81,11 +74,17 @@
 					<input name="installment" type="radio" value=0>
 					<span>一括</span>
 				</label>
+				<div>
+				<label>
+					<input class="au" id="residual" type="checkbox" checked disabled>
+					<span>かえトク（残価：<span id="residual-amount">0</span>円）</span>
+				</label>
+				</div>
 			</div>
-			<div class="element">頭金</div>
+			<!--<div class="element">頭金</div>
 			<div>
 				<input id="deposit" type="text" value=0 pattern="\d*" class="comma-num" />円
-			</div>
+			</div>-->
 			<div class="footer"><span id="device-amount"></span>円</div>
 		</div>
 		<div class="plan-area">
@@ -99,8 +98,8 @@
 				<select id="data-plan"></select>
 			</div>
 			<div class="element">オプションサービス</div>
-			<div id="options"></div>
-			<div class="element">固定バンドル割引</div>
+			<div><iframe id="optframe"></iframe></div>
+			<div class="element">固定通信セット割引</div>
 			<div>
 				<select id="bandle"></select>
 			</div>
@@ -114,15 +113,20 @@
 			</div>
 			<div class="footer"><span id="plan-amount"></span>円</div>
 		</div>
-		<div class="campaign-area">
-			<div class="header">キャンペーン・割引施策</div>
-			<div class="element">キャンペーン</div>
-			<div></div>
-			<div class="element">下取り</div>
-			<div></div>
-			<div class="element">クーポン</div>
-			<div></div>
-			<div class="footer"><span id="total-amount"></span>円</div>
+		<div class="right-area">
+			<div class="campaign-area">
+				<div class="header">キャンペーン・割引施策</div>
+				<div class="element">キャンペーン</div>
+				<div></div>
+				<div class="element">下取り</div>
+				<div></div>
+				<div class="element">クーポン</div>
+				<div></div>
+			</div>
+			<div class="total">
+				<div class="header">月額合計</div>
+				<div class="total-body"><span id="total-amount">0</span>円　</div>
+			</div>
 		</div>
 		</div>
 	</body>

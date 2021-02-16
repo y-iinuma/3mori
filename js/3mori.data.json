@@ -1,81 +1,98 @@
 {
+	"carrier": [
+		["au", "au"],
+		["docomo", "docomo"],
+		["softbank", "SoftBank"],
+		["uqmobile", "UQ mobile"],
+		["ymobile", "ﾜｲﾓﾊﾞｲﾙ"],
+		["rakuten", "楽天ﾓﾊﾞｲﾙ"],
+		["povo", "povo"],
+		["ahamo", "ahamo"],
+		["soline", "SB on LINE"]
+	],
 	"device": {
 		"undef": {
 			"display": "",
 			"price": 0,
-			"deposit": 0,
 			"talkplan": [],
 			"options": []
 		},
-		"au-ip1264": {
+		"au-ip12-64": {
 			"display": "iPhone12 64GB",
 			"price": 103430,
-			"deposit": 0,
+			"residual": 48000,
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
-			"options": ["au-5gnet", "au-app890"]
+			"options": ["au-app890"]
 		},
-		"au-ip12128": {
+		"au-ip12-128": {
 			"display": "iPhone12 128GB",
 			"price": 108260,
-			"deposit": 0,
+			"residual": 50760,
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
-			"options": ["au-5gnet", "au-app890"]
+			"options": ["au-app890"]
 		},
-		"au-ip12256": {
+		"au-ip12-256": {
 			"display": "iPhone12 256GB",
 			"price": 122435,
-			"deposit": 0,
+			"residual": 57000,
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
-			"options": ["au-5gnet", "au-app890"]
+			"options": ["au-app890"]
 		},
-		"au-ip12m64": {
+		"au-ip12m-64": {
 			"display": "iPhone12 mini 64GB",
 			"price": 90065,
-			"deposit": 0,
+			"residual": 41880,
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
-			"options": ["au-5gnet", "au-app890"]
+			"options": ["au-app890"]
 		},
-		"au-ip12m128": {
+		"au-ip12m-128": {
 			"display": "iPhone12 mini 128GB",
 			"price": 95240,
-			"deposit": 0,
+			"residual": 44640,
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
-			"options": ["au-5gnet", "au-app890"]
+			"options": ["au-app890"]
 		},
-		"au-ip12m256": {
+		"au-ip12m-256": {
 			"display": "iPhone12 mini 256GB",
 			"price": 109305,
-			"deposit": 0,
+			"residual": 51000,
 			"talkplan": ["au-unlim", "au-light", "au-simple"],
-			"options": ["au-5gnet", "au-app890"]
+			"options": ["au-app890"]
 		},
 		"au-3mori": {
 			"display": "旧プラン見積り用",
 			"price": 0,
-			"deposit": 0,
+			"residual": 0,
 			"talkplan": ["au-unlim", "au-light", "au-simple", "au-lte"],
-			"options": ["au-ltenet"]
+			"options": []
+		},
+		"dc-ip12-64": {
+			"display": "iPhone12 64GB",
+			"price": 101376,
+			"talkplan": ["dc-5gunlim", "dc-5glight", "dc-5gsimple"],
+			"options": []
 		},
 		"au": [
-			"au-ip1264", "au-ip12128", "au-ip12256",
-			"au-ip12m64", "au-ip12m128", "au-ip12m256",
+			"au-ip12-64", "au-ip12-128", "au-ip12-256",
+			"au-ip12m-64", "au-ip12m-128", "au-ip12m-256",
 			"au-3mori"
 		],
-		"docomo": {
-			
-		},
-		"softbank": {
-			
-		},
-		"uqmobile": {
-			
-		},
-		"ymobile": {
-			
-		},
-		"others": {
-			
-		}
+		"docomo": [
+			"dc-ip12-64"
+		],
+		"softbank": [
+			"sb-ip12-64", "sb-ip12-128", "sb-ip12-256",
+			"sb-ip12m-64", "sb-ip12m-128", "sb-ip12m-256"
+		],
+		"uqmobile": [
+			"uq-ipse2-64", "uq-ipse2-128", "uq-ipse2-256"
+		],
+		"ymobile": [
+			"ym-ipse2-64", "ym-ipse2-128", "ym-ipse2-256"
+		],
+		"rakuten": [
+			"rk-zero"
+		]
 	},
 	"talkplan": {
 		"au-unlim": {
@@ -85,6 +102,9 @@
 				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3",
 				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
 				"au-max5g-new"
+			],
+			"options": [
+				"au-5gnet", "au-denwakihonpack-v-free", "au-smapass-prem"
 			]
 		},
 		"au-light": {
@@ -94,6 +114,9 @@
 				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3",
 				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
 				"au-max5g-new"
+			],
+			"options": [
+				"au-5gnet", "au-denwakihonpack-v-free", "au-smapass-prem"
 			]
 		},
 		"au-simple": {
@@ -103,6 +126,9 @@
 				"au-pita5g-1", "au-pita5g-2", "au-pita5g-3",
 				"au-max5g", "au-max5g-p", "au-max5g-nfp", "au-max5g-tv", "au-max5g-as",
 				"au-max5g-new"
+			],
+			"options": [
+				"au-5gnet", "au-denwakihonpack-v", "au-smapass-prem"
 			]
 		},
 		"au-lte": {
@@ -110,7 +136,68 @@
 			"amount": 1868,
 			"combination": [
 				"au-lteflat"
-			]
+			],
+			"options": []
+		},
+		"dc-5gunlim": {
+			"display": "かけ放題ｵﾌﾟｼｮﾝ",
+			"amount": 1700,
+			"combination": [
+				"dc-5ggigaho",
+				"dc-5ggigalight1", "dc-5ggigalight3", "dc-5ggigalight5", "dc-5ggigalight7",
+				"dc-5ggigahopre"
+			],
+			"options": []
+		},
+		"dc-5glight": {
+			"display": "5分通話無料ｵﾌﾟｼｮﾝ",
+			"amount": 700,
+			"combination": [
+				"dc-5ggigaho",
+				"dc-5ggigalight1", "dc-5ggigalight3", "dc-5ggigalight5", "dc-5ggigalight7",
+				"dc-5ggigahopre"
+			],
+			"options": []
+		},
+		"dc-5gsimple": {
+			"display": "なし",
+			"amount": 0,
+			"combination": [
+				"dc-5ggigaho",
+				"dc-5ggigalight1", "dc-5ggigalight3", "dc-5ggigalight5", "dc-5ggigalight7",
+				"dc-5ggigahopre"
+			],
+			"options": []
+		},
+		"dc-unlim": {
+			"display": "かけ放題ｵﾌﾟｼｮﾝ",
+			"amount": 1700,
+			"combination": [
+				"dc-gigaho",
+				"dc-gigalight1", "dc-gigalight3", "dc-gigalight5", "dc-gigalight7",
+				"dc-gigahopre"
+			],
+			"options": []
+		},
+		"dc-light": {
+			"display": "5分通話無料ｵﾌﾟｼｮﾝ",
+			"amount": 700,
+			"combination": [
+				"dc-gigaho",
+				"dc-gigalight1", "dc-gigalight3", "dc-gigalight5", "dc-gigalight7",
+				"dc-gigahopre"
+			],
+			"options": []
+		},
+		"dc-simple": {
+			"display": "なし",
+			"amount": 0,
+			"combination": [
+				"dc-gigaho",
+				"dc-gigalight1", "dc-gigalight3", "dc-gigalight5", "dc-gigalight7",
+				"dc-gigahopre"
+			],
+			"options": []
 		}
 	},
 	"dataplan": {
@@ -171,7 +258,7 @@
 				"discount": ["au-2year"]
 			},
 			"au-max5g-new": {
-				"display": "使い放題MAX 5G",
+				"display": "【2021年3月～】使い放題MAX 5G",
 				"amount": 6580,
 				"bandle": 1000,
 				"family": [500, 1000],
@@ -183,6 +270,90 @@
 				"bandle": 934,
 				"family": [],
 				"discount": ["au-daredemo-lte"]
+			},
+			"dc-gigaho": {
+				"display": "ギガホ",
+				"amount": 7150,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-2year", "dc-credit"]
+			},
+			"dc-gigalight1": {
+				"display": "ギガライト ～1GB",
+				"amount": 3150,
+				"bandle": 500,
+				"family": [500, 1000],
+				"discount": ["dc-2year", "dc-credit"]
+			},
+			"dc-gigalight3": {
+				"display": "ギガライト ～3GB",
+				"amount": 4150,
+				"bandle": 500,
+				"family": [500, 1000],
+				"discount": ["dc-2year", "dc-credit"]
+			},
+			"dc-gigalight5": {
+				"display": "ギガライト ～5GB",
+				"amount": 5150,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-2year", "dc-credit"]
+			},
+			"dc-gigalight7": {
+				"display": "ギガライト ～7GB",
+				"amount": 6150,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-2year", "dc-credit"]
+			},
+			"dc-5ggigaho": {
+				"display": "5Gギガホ",
+				"amount": 7650,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-credit"]
+			},
+			"dc-5ggigalight1": {
+				"display": "5Gギガライト ～1GB",
+				"amount": 3150,
+				"bandle": 500,
+				"family": [500, 1000],
+				"discount": ["dc-credit"]
+			},
+			"dc-5ggigalight3": {
+				"display": "5Gギガライト ～3GB",
+				"amount": 4150,
+				"bandle": 500,
+				"family": [500, 1000],
+				"discount": ["dc-credit"]
+			},
+			"dc-5ggigalight5": {
+				"display": "5Gギガライト ～5GB",
+				"amount": 5150,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-credit"]
+			},
+			"dc-5ggigalight7": {
+				"display": "5Gギガライト ～7GB",
+				"amount": 6150,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-credit"]
+			},
+			"dc-gigahopre": {
+				"display": "【2021年4月～】ギガホ プレミア",
+				"amount": 6550,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-2year", "dc-credit"]
+			},
+			"dc-5ggigahopre": {
+				"display": "【2021年4月～】5Gギガホ プレミア",
+				"amount": 6650,
+				"bandle": 1000,
+				"family": [500, 1000],
+				"discount": ["dc-credit"]
 			}
 	},
 	"discount": {
@@ -197,6 +368,14 @@
 		"au-daredemo-lte": {
 			"display": "旧2年契約(誰でも割)",
 			"amount": 934
+		},
+		"dc-2year": {
+			"display": "2年契約",
+			"amount": 170
+		},
+		"dc-credit": {
+			"display": "dカード支払割",
+			"amount": 170
 		}
 	},
 	"options": {
@@ -254,9 +433,27 @@
 			"checked": false,
 			"exclusion": 0
 		},
+		"au-denwakihonpack-v-free": {
+			"display": "電話きほんﾊﾟｯｸ(V)",
+			"amount": 0,
+			"checked": false,
+			"exclusion": 0
+		},
+		"au-denwakihonpack-v": {
+			"display": "電話きほんﾊﾟｯｸ(V)",
+			"amount": 400,
+			"checked": false,
+			"exclusion": 0
+		},
+		"au-smapass-prem": {
+			"display": "auｽﾏｰﾄﾊﾟｽﾌﾟﾚﾐｱﾑ",
+			"amount": 499,
+			"checked": false,
+			"exclusion": 0
+		},
 		"d-spm": {
 			"display": "spモード",
-			"amount": 300,
+			"amount": 0,
 			"checked": true,
 			"exclusion": 0
 		},

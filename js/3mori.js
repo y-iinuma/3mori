@@ -1,4 +1,4 @@
-var TAX_RATE = 1.1, jsonData;
+var TAX_RATE = 1.1, jsonData, optList;
 
 $(function(){
 	//3桁区切り
@@ -17,22 +17,38 @@ $(function(){
 		}
 	});
 
-	$("#carrier").val("");
-
 	$.getJSON("js/3mori.data.json", function(data) {
 		jsonData = data;
+		//キャリアプルダウン設定
+		var option = $.map(data.carrier, function(val) {
+			return $("<option>", { "value": val[0], "text": val[1] });
+		});
+		$("#carrier").empty()
+			.append(option)
+			.val("");
 	}).error(function(jqXHR, textStatus, errorThrown) {
-		alert("設定ファイルの読み込みでエラーが発生しました：" + textStatus + "\n" + jqXHR.responseText);
+		alert("設定ファイルの読み込みでエラーが発生しました：" + textStatus);
 	});
+
+	
 
 	//キャリア変更時
 	$("#carrier").on("change",function() {
-		$("input[name='order']").eq(3).attr({"disabled": $(this).val() !== "docomo"});
-		$("input[name='order']").eq(2).attr({"disabled": $(this).val() === "uqmobile"});
 		$("input[name='order']").eq(0).prop("checked", true);
 		var option = $.map(jsonData.device[$(this).val()], function(val) {
 			return $("<option>", { "value": val, "text": jsonData.device[val].display });
 		});
+		
+		//キャリア独自項目
+		$.each(jsonData.carrier, function(i, val) {
+			$("." + val[0]).each(function(){
+				$(this).prop("disabled", !(val[0] == $("#carrier").val()));
+			});
+		});
+		$("." + $("#carrier").val()).each(function(){
+			$(this).prop("disabled", false);
+		});
+		
 		$("#device").empty()
 			.append(option)
 			.change();
@@ -42,31 +58,24 @@ $(function(){
 	$("#device").on("change", function() {
 		$("#price").val(jsonData.device[$(this).val() || "undef"].price)
 			.blur();
-		$("#deposit").val(jsonData.device[$(this).val() || "undef"].deposit || 0)
-			.blur();
+		if ( ! $("#residual").prop("disabled") ) {
+			$("#residual-amount").text(String(jsonData.device[$(this).val() || "undef"].residual).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') || 0)
+				.blur();
+		}
 		var option = $("#device").val() ? $.map(jsonData.device[$("#device").val()].talkplan, function(val) {
 			return $("<option>", { "value": val, "text": jsonData.talkplan[val].display });
 		}) : null;
 		$("#talk-plan").empty()
 			.append(option)
 			.change();
-		var checkList = $("#device").val() ? $.map(jsonData.device[$("#device").val()].options, function(val) {
-			var $optLine = $("<label>");
-			$optLine.append($("<input/>").prop({
-				"type": "checkbox",
-				"name": "options",
-				"value": jsonData.options[val].amount,
-				"checked": jsonData.options[val].checked
-			}));
-			$optLine.append(jsonData.options[val].display);
-			return $("<div>").append($optLine);
-		}) : null;
-		$("#options").empty()
-			.append(checkList);
+		sumDeviceFee();
+		refleshOptionList();
 	});
 	
 	//通話プラン変更時
 	$("#talk-plan").on("change", function() {
+		refleshOptionList();
+		
 		var combi = jsonData.talkplan[$("#talk-plan").val()].combination;
 		if ( $("#combi_prev").val() == combi ) { //プラン区分が変わらなければ再計算してreturn
 			sumPlanFee();
@@ -78,22 +87,6 @@ $(function(){
 		$("#data-plan").empty()
 			.append(option)
 			.change();
-
-		//オプション変更
-		var checkList = $("#talk-plan").val() ? $.map(jsonData.device[$("#device").val()].options, function(val) {
-			var $optLine = $("<label>");
-			$optLine.append($("<input/>").prop({
-				"type": "checkbox",
-				"name": "options",
-				"value": jsonData.options[val].amount,
-				"checked": jsonData.options[val].checked
-			}));
-			$optLine.append(jsonData.options[val].display);
-			return $("<div>").append($optLine);
-		}) : null;
-		$("#options").empty()
-			.append(checkList);
-
 		$("#combi_prev").val(combi); //プラン区分保持
 	});
 
@@ -138,15 +131,26 @@ $(function(){
 	});
 	
 	//項目変更時再計算
-	$("#bandle,#family,#others,input[name='options']").on("change", function() {
+	$("#bandle,#family,#others").on("change", function() {
+		sumPlanFee();
+	});
+
+	optList = $("#optframe").contents().find("body").append("<div id='options'>").css("font-size","0.8rem").find("div");	
+	$(optList).on("change", "input[name='options']", function() {
 		sumPlanFee();
 	});
 	
 	
 	
-	$("#device,#price,#discount,input[name='installment'],#deposit").on("change", function() {
+	$("#device,#price,#discount,#residual").on("change", function() {
 		sumDeviceFee();
 	});
+	
+	$("input[name='installment']").on("change", function() {
+		$("#residual").prop("disabled", !( $("input[name='installment']:checked").val() == 2 && $("#carrier").val() == "au" ));
+		sumDeviceFee();
+	});
+	
 });
 
 function addOptionArray(val, txt) {
@@ -159,17 +163,52 @@ function sumPlanFee() {
 			- $("#bandle").val()
 			- $("#family").val()
 			- $("#others").val();
-	$("input[name='options']:checked").each(function() {
-		amount += +$(this).val();
+	$(optList).find("input[name='options']:checked").each(function() {
+		amount += Number($(this).val());
 	});
 	$("#plan-amount").text( String(Math.floor(amount*TAX_RATE)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
-	$("#total-amount").text(String( Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, '')) ).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
+	$("#total-amount").text( String(Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, ''))).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
 }
 
 function sumDeviceFee() {
-	var amount = $("#price").val().replace(/,/g, '') - $("#discount").val().replace(/,/g, '') - $("#deposit").val().replace(/,/g, '');
-	amount = amount > 0 ? amount / ($("input[name='installment']:checked").val() * 12) : 0;
-		
+	var amount = $("#price").val().replace(/,/g, '') - $("#discount").val().replace(/,/g, '');
+	
+	if ( $("#residual").prop("checked") && !($("#residual").prop("disabled")) ) { //かえトク選択時
+		amount = (amount - $("#residual-amount").text().replace(/,/g, '')) / 23;
+	} else {
+		var inst = $("input[name='installment']:checked").val();
+		amount = inst > 0 ? amount / (inst * 12) : 0;
+	}
+	
 	$("#device-amount").text( String(Math.floor(amount)).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
-	$("#total-amount").text(String( Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, '')) ).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
+	$("#total-amount").text( String(Number($("#device-amount").text().replace(/,/g, '')) + Number($("#plan-amount").text().replace(/,/g, ''))).replace(/(\d)(?=(\d\d\d)+$)/g, '$1,') );
+}
+
+function refleshOptionList() {
+	var checkList = $("#device").val() ? $.map(jsonData.device[$("#device").val()].options, function(val) {
+		var $optLine = $("<label>");
+		$optLine.append($("<input/>").prop({
+			"type": "checkbox",
+			"name": "options",
+			"value": jsonData.options[val].amount,
+			"checked": jsonData.options[val].checked
+		}));
+		$optLine.append(jsonData.options[val].display);
+		return $("<div>").append($optLine);
+	}) : null;
+	$(optList).empty()
+		.append(checkList);
+	
+	checkList = $.map(jsonData.talkplan[$("#talk-plan").val()].options, function(val) {
+		var $optLine = $("<label>");
+		$optLine.append($("<input/>").prop({
+			"type": "checkbox",
+			"name": "options",
+			"value": jsonData.options[val].amount,
+			"checked": jsonData.options[val].checked
+		}));
+		$optLine.append(jsonData.options[val].display);
+		return $("<div>").append($optLine);
+	});
+	$(optList).append(checkList);
 }
