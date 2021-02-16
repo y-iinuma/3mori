@@ -37,7 +37,7 @@ $(function(){
 		$("#numinput").val( $(this).val() );
 		$(".numpad").css("display","block");
 		$("#targetid").val($(this).attr("id"))
-			.blur();
+		$(this).blur();
 		return false;
 	});
 
