@@ -37,6 +37,7 @@ $(function(){
 		$("#numinput").val( $(this).val() );
 		$(".numpad").css("display","block");
 		$("#targetid").val($(this).attr("id"));
+		return false;
 	});
 
 	$.getJSON("js/3mori.data.json", function(data) {
