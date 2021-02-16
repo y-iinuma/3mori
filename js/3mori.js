@@ -36,7 +36,8 @@ $(function(){
 	$("input[type=text]").focus( function() {
 		$("#numinput").val( $(this).val() );
 		$(".numpad").css("display","block");
-		$("#targetid").val($(this).attr("id"));
+		$("#targetid").val($(this).attr("id"))
+			.blur();
 		return false;
 	});
 
