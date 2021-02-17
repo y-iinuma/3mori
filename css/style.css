@@ -4,10 +4,10 @@ body {
 	width: 100vw;
 	height: 100vh;
 	overflow-y: scroll;
-	-ms-overflow-style: none;    /* IE, Edge �Ή� */
-	scrollbar-width: none;       /* Firefox �Ή� */
+	-ms-overflow-style: none;    /* IE, Edge ‘Î‰ž */
+	scrollbar-width: none;       /* Firefox ‘Î‰ž */
 }
-body::-webkit-scrollbar {  /* Chrome, Safari �Ή� */
+body::-webkit-scrollbar {  /* Chrome, Safari ‘Î‰ž */
 	display:none;
 }
 select {
@@ -206,6 +206,7 @@ input[type=text] {
 	height: 80px;
 	font-size: 30px;
 	border-radius: 10px;
+	touch-action: manipulation;
 }
 
 .numpad input[type="text"] {
