@@ -1,6 +1,15 @@
 var TAX_RATE = 1.1, jsonData, optList;
 
 $(function(){
+	//画面サイズ調整
+	$(document).ready(function() {
+		$(".3mori").css("width", $(window).width() + "px");
+		$(".3mori").css("height", $(window).height() + "px");
+	});
+	$(window).resize(function() {
+		$(".3mori").css("height", $(window).height() + "px");
+	});
+
 	//3桁区切り
 	$(".comma-num").focus(function(){
 		$(this).val($(this).val().replace(/,/g, ''));
