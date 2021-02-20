@@ -10,6 +10,11 @@ $(function(){
 		$(".3m-main,.numpad").css("width", $(window).width() + "px");
 		$(".3m-main,.numpad").css("height", $(window).height() + "px");
 	});
+	
+	//スクロール禁止
+	$(window).bind("touchmove", function(e) {
+		e.preventDefault();
+	});
 
 	//3桁区切り
 	$(".comma-num").focus(function(){
