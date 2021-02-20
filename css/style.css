@@ -97,7 +97,7 @@ input[type=checkbox]:disabled + span {
 	height: 44px;
 	border-radius: 10px;
 	position: absolute;
-	bottom: 62px;
+	bottom: 0px;
 	font-size: 1rem;
 	font-weight: bold;
 }
