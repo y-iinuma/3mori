@@ -1,17 +1,15 @@
 var TAX_RATE = 1.1, jsonData, optList;
 
+function resizeElement() {
+	$(".3m-main,.numpad").css("width", $(window).width() + "px");
+	$(".3m-main,.numpad").css("height", $(window).height() + "px");
+	$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
+}
+
 $(function(){
 	//画面サイズ調整
-	$(document).ready(function() {
-		$(".3m-main,.numpad").css("width", $(window).width() + "px");
-		$(".3m-main,.numpad").css("height", $(window).height() + "px");
-		$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
-	});
-	$(window).resize(function() {
-		$(".3m-main,.numpad").css("width", $(window).width() + "px");
-		$(".3m-main,.numpad").css("height", $(window).height() + "px");
-		$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
-	});
+	$(document).ready(resizeElement);
+	$(window).resize(resizeElement);
 	
 	//スクロール禁止
 	document.addEventListener("touchmove", function(e) {
