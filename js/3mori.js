@@ -10,6 +10,10 @@ $(function(){
 		$(".3m-main,.numpad").css("width", $(window).width() + "px");
 		$(".3m-main,.numpad").css("height", $(window).height() + "px");
 	});
+	
+	$("body").on('selectstart', function() {
+		return false;
+	});
 
 	//3桁区切り
 	$(".comma-num").focus(function(){
