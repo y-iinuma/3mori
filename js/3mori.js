@@ -5,10 +5,12 @@ $(function(){
 	$(document).ready(function() {
 		$(".3m-main,.numpad").css("width", $(window).width() + "px");
 		$(".3m-main,.numpad").css("height", $(window).height() + "px");
+		$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
 	});
 	$(window).resize(function() {
 		$(".3m-main,.numpad").css("width", $(window).width() + "px");
 		$(".3m-main,.numpad").css("height", $(window).height() + "px");
+		$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
 	});
 	
 	//スクロール禁止
