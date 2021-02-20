@@ -6,7 +6,13 @@ body {
 	overflow-y: scroll;
 	-ms-overflow-style: none;    /* IE, Edge ‘Î‰ž */
 	scrollbar-width: none;       /* Firefox ‘Î‰ž */
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
+
 body::-webkit-scrollbar {  /* Chrome, Safari ‘Î‰ž */
 	display:none;
 }
