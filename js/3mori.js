@@ -4,8 +4,8 @@ function resizeElement() {
 	$(".3m-main,.numpad").css("width", $(window).width() + "px");
 	$(".3m-main,.numpad").css("height", $(window).height() + "px");
 	$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
-	$(".numpad").find("div").css("left", ($(window).width() - $(".numpad").width()) / 2 + "px");
-	$(".numpad").find("div").css("top", ($(window).height() - $(".numpad").height()) / 2 + "px");
+	$(".numpad").find("div").css("left", ($(window).width() - $(".numpad").find("div").width()) / 2 + "px");
+	$(".numpad").find("div").css("top", ($(window).height() - $(".numpad").find("div").height()) / 2 + "px");
 }
 
 $(function(){
