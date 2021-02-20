@@ -11,6 +11,8 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	
+	touch-action: manipulation;
 }
 
 body::-webkit-scrollbar {  /* Chrome, Safari ‘Î‰ž */
@@ -212,7 +214,6 @@ input[type=text] {
 	height: 80px;
 	font-size: 30px;
 	border-radius: 10px;
-	touch-action: manipulation;
 }
 
 .numpad input[type="text"] {
