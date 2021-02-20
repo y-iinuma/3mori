@@ -3,12 +3,12 @@ var TAX_RATE = 1.1, jsonData, optList;
 $(function(){
 	//画面サイズ調整
 	$(document).ready(function() {
-		$(".3m-main").css("width", $(window).width() + "px");
-		$(".3m-main").css("height", $(window).height() + "px");
+		$(".3m-main,.numpad").css("width", $(window).width() + "px");
+		$(".3m-main,.numpad").css("height", $(window).height() + "px");
 	});
 	$(window).resize(function() {
-		$(".3m-main").css("width", $(window).width() + "px");
-		$(".3m-main").css("height", $(window).height() + "px");
+		$(".3m-main,.numpad").css("width", $(window).width() + "px");
+		$(".3m-main,.numpad").css("height", $(window).height() + "px");
 	});
 
 	//3桁区切り
