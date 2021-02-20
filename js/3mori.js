@@ -12,9 +12,9 @@ $(function(){
 	});
 	
 	//スクロール禁止
-	$(window).bind("touchmove", function(e) {
+	document.addEventListener("touchmove", function(e) {
 		e.preventDefault();
-	});
+	}, {passive: false});
 
 	//3桁区切り
 	$(".comma-num").focus(function(){
