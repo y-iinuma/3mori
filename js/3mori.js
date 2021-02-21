@@ -6,6 +6,8 @@ function resizeElement() {
 	$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
 	$(".numpad").find("div").css("left", ($(window).width() - $(".numpad").find("div").width()) / 2 + "px");
 	$(".numpad").find("div").css("top", ($(window).height() - $(".numpad").find("div").height()) / 2 + "px");
+	alert('高さ : ' + screen.height +','+ screen.availHeight + ',' + window.outerHeight  + ',' + window.innerHeight +','+ $(window).height() + ',' + document.documentElement.clientHeight);
+
 }
 
 $(function(){
