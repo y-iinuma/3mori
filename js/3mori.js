@@ -2,12 +2,10 @@ var TAX_RATE = 1.1, jsonData, optList;
 
 function resizeElement() {
 	$(".3m-main,.numpad").css("width", $(window).width() + "px");
-	$(".3m-main,.numpad").css("height", $(window).height() + "px");
-	$(".campaign-area").css("height", $(window).height() - $(".total").height() + "px");
+	$(".3m-main,.numpad").css("height", window.innerHeight + "px");
+	$(".campaign-area").css("height", window.innerHeight - $(".total").height() + "px");
 	$(".numpad").find("div").css("left", ($(window).width() - $(".numpad").find("div").width()) / 2 + "px");
-	$(".numpad").find("div").css("top", ($(window).height() - $(".numpad").find("div").height()) / 2 + "px");
-	alert('高さ : ' + screen.height +','+ screen.availHeight + ',' + window.outerHeight  + ',' + window.innerHeight +','+ $(window).height() + ',' + document.documentElement.clientHeight);
-
+	$(".numpad").find("div").css("top", (window.innerHeight - $(".numpad").find("div").height()) / 2 + "px");
 }
 
 $(function(){
