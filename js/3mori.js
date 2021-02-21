@@ -6,6 +6,7 @@ function resizeElement() {
 	$(".campaign-area").css("height", window.innerHeight - $(".total").height() + "px");
 	$(".numpad").find("div").css("left", ($(window).width() - $(".numpad").find("div").width()) / 2 + "px");
 	$(".numpad").find("div").css("top", (window.innerHeight - $(".numpad").find("div").height()) / 2 + "px");
+	alert('幅 : ' + screen.width +','+ screen.availWidth + ',' + window.outerWidth  + ',' + window.innerWidth +','+ $(window).width() + ',' + document.documentElement.clientWidth);
 }
 
 $(function(){
