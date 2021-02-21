@@ -1,11 +1,15 @@
 var TAX_RATE = 1.1, jsonData, optList;
 
 function resizeElement() {
+	var height = window.innerHeight,
+	    ua = window.navigator.userAgent.toLowerCase();
+	if ( ua.indexOf('ipad') > -1 || ua.indexOf('macintosh') > -1 && 'ontouchend' in document )
+		height -= 20; //iPadなら調整
 	$(".3m-main,.numpad").css("width", $(window).width() + "px");
-	$(".3m-main,.numpad").css("height", window.innerHeight + "px");
-	$(".campaign-area").css("height", window.innerHeight - $(".total").height() + "px");
+	$(".3m-main,.numpad").css("height", height + "px");
+	$(".campaign-area").css("height", height - $(".total").height() + "px");
 	$(".numpad").find("div").css("left", ($(window).width() - $(".numpad").find("div").width()) / 2 + "px");
-	$(".numpad").find("div").css("top", (window.innerHeight - $(".numpad").find("div").height()) / 2 + "px");
+	$(".numpad").find("div").css("top", (height - $(".numpad").find("div").height()) / 2 + "px");
 }
 
 $(function(){
