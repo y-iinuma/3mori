@@ -18,7 +18,7 @@ body::-webkit-scrollbar {  /* Chrome, Safari ‘Î‰ž */
 	display:none;
 }
 select {
-	width: 20vw;
+	width: 80%;
 	border-radius: 10px;
 	border: 1px solid #666666;
 	padding-left: 1rem;
