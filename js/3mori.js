@@ -4,7 +4,7 @@ function resizeElement() {
 	var height = window.innerHeight,
 	    ua = window.navigator.userAgent.toLowerCase();
 	if ( ua.indexOf('ipad') > -1 || ua.indexOf('macintosh') > -1 && 'ontouchend' in document )
-		height -= 25; //iPadなら調整
+		height -= 30; //iPadなら調整
 	$(".3m-main,.numpad").css("width", $(window).width() + "px");
 	$(".3m-main,.numpad").css("height", height + "px");
 	$(".campaign-area").css("height", height - $(".total").height() + "px");
